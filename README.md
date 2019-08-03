@@ -22,5 +22,5 @@ This analysis examines the sequence conservations and structural properties of I
       - [./data/MS\_ISG15\_Raw.tsv](./data/MS_ISG15_Raw.tsv)
       - Fasta/Ortholog_*.fa
     - Output file:
-      - [./result/ISG15\_Lys\_con.tsv](./result/ISG15_Lys_con.tsv)
+      - [./result/ISG15_Lys_con.tsv](./result/ISG15_Lys_con.tsv)
       
