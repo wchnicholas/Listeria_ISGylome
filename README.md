@@ -8,7 +8,7 @@ This analysis examines the sequence conservations and structural properties of I
 * [./data/clusterinfo.tsv](./data/clusterinfo.tsv): Clustering of protein based on ISGylation status across different infection conditions.
 * [./data/ISG15\_taxID.tsv](./data/ISG15_taxID.tsv): Downloaded from [NCBI](https://www.ncbi.nlm.nih.gov/gene/?term=ISG15).
 * [./data/taxID\_ISGylation\_class.csv](./data/taxID_ISGylation_class.csv): Describes whether ISGylation is presence in a given species.
-* [./data/ASA.table](./data/ASA.table): Residue's solvent accessibility from [Tien et al.](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0080635).
+* [./data/ASA.table](./data/ASA.table): Residue's solvent accessibility from [Tien et al. 2013](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0080635).
 
 ### Protocol
 1. [./script/Parse\_MS.py](./script/Parse_MS.py): Retrives ortholog sequences and PDB codes (if any) for individual proteins of interest.
