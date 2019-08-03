@@ -15,12 +15,58 @@ This analysis examines the sequence conservations and structural properties of I
     - Input file:
       - [./data/MS\_ISG15\_Raw.tsv](./data/MS_ISG15_Raw.tsv)
     - Output file:
-      - Fasta/Ortholog_*.fa
-      - Structure/PDBcodes_*.txt
+      - Fasta/Ortholog\_\*.fa
+      - Structure/PDBcodes\_\*.txt
 2. [./script/Parse\_Orthologs.py](./script/Parse_Orthologs.py): Aligns ortholog sequences of individual proteins of interest and computes sequence conservation of sites of interest.
     - Input file:
       - [./data/MS\_ISG15\_Raw.tsv](./data/MS_ISG15_Raw.tsv)
-      - Fasta/Ortholog_*.fa
+      - Fasta/Ortholog\_\*.fa
     - Output file:
-      - [./result/ISG15_Lys_con.tsv](./result/ISG15_Lys_con.tsv)
-      
+      - [./result/ISG15\_Lys\_con.tsv](./result/ISG15_Lys_con.tsv)
+      - Fasta/Ortholog\_\*.aln
+3. [./script/Parse\_PDB.py](./script/Parse_PDB.py): Retrives PDB files and computes solvent accessibility of residues of interset.
+    - Input file:
+      - [./data/MS\_ISG15\_Raw.tsv](./data/MS_ISG15_Raw.tsv)
+      - [./data/ASA.table](./data/ASA.table)
+      - Structure/PDBcodes\_\*.txt
+    - Output file:
+      - [./result/ISG15\_Lys\_RSA.tsv](./result/ISG15_Lys_RSA.tsv)
+      - PDB/\*.pdb
+      - dssp/\*.dssp
+4. [./script/Parse\_RSA.py](./script/Parse_RSA.py): Removes redundant information in [./result/ISG15\_Lys\_RSA.tsv](./result/ISG15_Lys_RSA.tsv).
+    - Input file:
+      - [./result/ISG15\_Lys\_RSA.tsv](./result/ISG15_Lys_RSA.tsv)
+    - Output file:
+      - [./result/ISG15\_Lys\_RSA\_filtered.tsv](result/ISG15_Lys_RSA_filtered.tsv)
+5. [./script/Parse\_peptide.py](./script/Parse_peptide.py): Extracts the amino acid sequences flanking the residues of interest.
+    - Input file: 
+      - [./data/MS\_ISG15\_Raw.tsv](./data/MS_ISG15_Raw.tsv)
+    - Output file:
+      - result/Peptide\_\*.aln
+6. [./script/aln\_to\_tree.sh](./script/aln_to_tree.sh): Generates phylogenetic trees from sequence alignment files
+    - Input file:
+      - Fasta/Ortholog\_\*.aln
+    - Output file:
+      - Tree/Ortholog\_\*.tree
+7. [./script/Adhoc\_analysis.py](./script/Adhoc_analysis.py): Generates a summary of the number of species with ISGylation vs Lys at the residues of interest.
+    - Input file:
+      - Fasta/Ortholog\_\*.aln
+    - Output file:
+      - Fasta/Ortholog\_\*\_\[SITE\].aln
+      - Tree/Count\_Lys\_\*.tsv
+
+### Plotting
+1. [./script/Plot\_ISG15vsAll.R](./script/Plot_ISG15vsAll.R): Compares the distributions of solvent accessibility and sequence conservations between ISGylated Lys and non-ISGylated Lys.
+    - Input file:
+      - [./result/ISG15\_Lys\_con.tsv](./result/ISG15_Lys_con.tsv)
+      - [./result/ISG15\_Lys\_RSA\_filtered.tsv](./result/ISG15_Lys_RSA_filtered.tsv)
+    - Output file:
+      - [./graph/Compare\_Lys\_Con.png](./graph/Compare_Lys_Con.png)
+      - [./graph/Compare\_RSA.png](./graph/Compare_RSA.png)
+2. [./script/Plot\_Tree.R](./script/Plot\_Tree.R): Plots phylogenetic trees with species of interest highlighted.
+    - Input file:
+      - Tree/Ortholog\_\*.tree
+    - Output file:
+      - graph/Tree\_\*.png
+3. [./script/highlight\_lys.pml](./script/highlight_lys.pml): Structural analysis of ISG15 protein (run in [PyMol](https://pymol.org/2/)).
+4. [./script/structure\_analysis.pml](./script/structure_analysis.pml): Structural analysis of proteins of interest (run in [PyMol](https://pymol.org/2/)).
